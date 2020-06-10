@@ -1,0 +1,25 @@
+name: khb test
+
+on:
+  push:
+
+env:
+  # set a default terminal for various cmds that expect it
+  TERM: xterm
+
+jobs:
+  run-CI-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+        value: [true, ""]
+    env:
+      debug: ${{ matrix.value }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: 1st step
+        run: |
+          ./test.sh
