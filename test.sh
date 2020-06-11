@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 trap '>&2 echo Error: Command \`$BASH_COMMAND\` on line $LINENO failed with exit code $?' ERR
+trap 'exit 1' SIGPIPE
 [[ $debug ]] && set -x
 
 echo "
