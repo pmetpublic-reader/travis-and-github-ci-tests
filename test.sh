@@ -6,5 +6,5 @@ trap - SIGPIPE
 
 echo "ARGH!"
 trap - SIGPIPE
-rand_subdomain_suffix="$(base64 < /dev/random | tr '[:upper:]' '[:lower:]' | head -c 4)"
+rand_subdomain_suffix="$(base64 < /dev/random | LC_ALL=C tr '[:upper:]' '[:lower:]' | head -c 4)"
 echo "$rand_subdomain_suffix"
