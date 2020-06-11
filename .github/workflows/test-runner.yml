@@ -14,9 +14,9 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest
+          # - ubuntu-latest
           - macos-latest
-        value: [true, ""]
+        value: [true]
     env:
       debug: ${{ matrix.value }}
     steps:
@@ -24,7 +24,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.3'
-        tools: composer, prestissimo
+          tools: composer, prestissimo
       - name: 1st step
         run: |
           ./composer-test.sh
