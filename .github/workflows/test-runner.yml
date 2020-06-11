@@ -6,7 +6,7 @@ on:
 env:
   # set a default terminal for various cmds that expect it
   TERM: xterm
-  COMPOSER_AUTH: ${{ COMPOSER_AUTH }}
+  COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
 jobs:
   run-CI-tests:
