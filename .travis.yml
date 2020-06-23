@@ -17,4 +17,4 @@ install:
   - tmate
   - sleep 1h
 script:
-  - echo hi
+  - for i in {1..60..5}; do echo $i && sleep 9m; done
