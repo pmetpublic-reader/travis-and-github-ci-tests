@@ -20,12 +20,16 @@ jobs:
     env:
       debug: ${{ matrix.value }}
     steps:
-      - uses: actions/checkout@v2
+      - run: |
+        echo "sent to file" > mylog
+        read_from_file="$(<mylog)"
+        curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"$read_from_file\"}" ${{ secrets.SI_SANDBOX_SLACK_WEBHOOK_URL }}
+      # - uses: actions/checkout@v2
       # - uses: mxschmitt/action-tmate@v2
-      - uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.3'
-          tools: composer, prestissimo
+      # - uses: shivammathur/setup-php@v2
+      #   with:
+      #     php-version: '7.3'
+      #     tools: composer, prestissimo
       # - name: 1st step
       #   run: |
       #     ./composer-test.sh

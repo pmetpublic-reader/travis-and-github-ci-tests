@@ -12,9 +12,9 @@ env:
   matrix:
     - debug=true
     # - debug=""
-install:
-  - brew install tmate
-  - tmate
-  - sleep 1h
-script:
-  - for i in {1..60..5}; do echo $i && sleep 9m; done
+# install:
+#   - brew install tmate
+#   - tmate
+#   - sleep 1h
+# script:
+#   - for i in {1..60..5}; do echo $i && sleep 9m; done
