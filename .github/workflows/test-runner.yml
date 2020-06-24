@@ -20,7 +20,8 @@ jobs:
     env:
       debug: ${{ matrix.value }}
     steps:
-      - run: |
+      - name: 1st step
+        run: |
         echo hi
       # curl -X POST -H 'Content-type: application/json' --data '{"text":"read_from_file"}' ${{ secrets.SI_SANDBOX_SLACK_WEBHOOK_URL }}
       # - uses: actions/checkout@v2
