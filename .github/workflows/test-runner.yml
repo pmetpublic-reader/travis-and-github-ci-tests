@@ -7,7 +7,7 @@ env:
   # set a default terminal for various cmds that expect it
   TERM: xterm
   COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
-  slack_url: ${{ secrets.SI_SANDBOX_SLACK_WEBHOOK_URL }}
+  # slack_url: ${{ secrets.SI_SANDBOX_SLACK_WEBHOOK_URL }}
 
 jobs:
   run-CI-tests:
@@ -22,11 +22,11 @@ jobs:
       debug: ${{ matrix.value }}
     steps:
       - run: |
-          echo "sent to file" > mylog
+          echo "hi there" > mylog
           read_from_file="$(<mylog)"
           curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"$read_from_file\"}" ${{ secrets.SI_SANDBOX_SLACK_WEBHOOK_URL }}
       # - uses: actions/checkout@v2
-      - uses: mxschmitt/action-tmate@v2
+      # - uses: mxschmitt/action-tmate@v2
       # - uses: shivammathur/setup-php@v2
       #   with:
       #     php-version: '7.3'
