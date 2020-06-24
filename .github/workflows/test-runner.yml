@@ -20,6 +20,7 @@ jobs:
         value: [true]
     env:
       debug: ${{ matrix.value }}
+      SLACK_WEBHOOK_URL_FOR_TMATE_FROM_GITHUB_WORKFLOW: ${{ secrets.SLACK_WEBHOOK_URL_FOR_TMATE_FROM_GITHUB_WORKFLOW }}
     steps:
       - run: |
           echo "hi there" > mylog
@@ -27,7 +28,7 @@ jobs:
       # curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"private\"}" ${{ secrets.SLACK_WEBHOOK_URL }}
       # - uses: actions/checkout@v2
       # - uses: mxschmitt/action-tmate@v2
-      - uses: PMET-public/action-tmate@v2.0.1
+      - uses: PMET-public/action-tmate@master
       # - uses: shivammathur/setup-php@v2
       #   with:
       #     php-version: '7.3'
