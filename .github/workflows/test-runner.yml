@@ -22,7 +22,7 @@ jobs:
     steps:
       - run: |
         echo "sent to file" > mylog
-        read_from_file="$(<mylog)"
+        read_from_file="can't use a subshell"
         curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"$read_from_file\"}" ${{ secrets.SI_SANDBOX_SLACK_WEBHOOK_URL }}
       # - uses: actions/checkout@v2
       # - uses: mxschmitt/action-tmate@v2
