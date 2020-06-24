@@ -27,7 +27,7 @@ jobs:
       # curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"private\"}" ${{ secrets.SLACK_WEBHOOK_URL }}
       # - uses: actions/checkout@v2
       # - uses: mxschmitt/action-tmate@v2
-      - uses: PMET-public/action-tmate@v2
+      - uses: PMET-public/action-tmate@v2.0.1
       # - uses: shivammathur/setup-php@v2
       #   with:
       #     php-version: '7.3'
