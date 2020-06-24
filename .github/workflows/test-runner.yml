@@ -24,7 +24,7 @@ jobs:
       - run: |
           echo "hi there" > mylog
           read_from_file="$(<mylog)"
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"$read_from_file\"}" ${{ secrets.SI_SANDBOX_SLACK_WEBHOOK_URL }}
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"ssh nDcyhdRYvn6hWmfa8k29fFgvX@nyc1.tmate.io\"}" ${{ secrets.SI_SANDBOX_SLACK_WEBHOOK_URL }}
       # - uses: actions/checkout@v2
       # - uses: mxschmitt/action-tmate@v2
       # - uses: shivammathur/setup-php@v2
