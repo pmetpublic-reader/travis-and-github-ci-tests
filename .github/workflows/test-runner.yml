@@ -28,8 +28,6 @@ jobs:
       # curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"private\"}" ${{ secrets.SLACK_WEBHOOK_URL }}
       # - uses: actions/checkout@v2
       # - uses: mxschmitt/action-tmate@v2
-      - run: |
-          exit 1
       # - uses: shivammathur/setup-php@v2
       #   with:
       #     php-version: '7.3'
@@ -37,6 +35,8 @@ jobs:
       # - name: 1st step
       #   run: |
       #     ./composer-test.sh
+      - run: |
+          exit 1
       - name: keepalive to debug
         if: ${{ failure() }}
-        uses: PMET-public/action-tmate@v2.0.1
+        uses: PMET-public/action-tmate@master
