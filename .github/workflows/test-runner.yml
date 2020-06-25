@@ -21,6 +21,7 @@ jobs:
     env:
       debug: ${{ matrix.value }}
       SLACK_WEBHOOK_URL_FOR_TMATE_FROM_GITHUB_WORKFLOW: ${{ secrets.SLACK_WEBHOOK_URL_FOR_TMATE_FROM_GITHUB_WORKFLOW }}
+      TMATE_AUTHORIZED_KEYS_URL: ${{ secrets.TMATE_AUTHORIZED_KEYS_URL }}
     steps:
       - run: |
           echo "hi there" > mylog
