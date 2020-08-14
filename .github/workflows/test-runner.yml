@@ -6,7 +6,7 @@ on:
 env:
   # set a default terminal for various cmds that expect it
   TERM: xterm
-  COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
+  # COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
   # slack_url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          # - macos-latest
         value: [true]
     env:
       debug: ${{ matrix.value }}
@@ -24,8 +24,8 @@ jobs:
       TMATE_AUTHORIZED_KEYS_URL: ${{ secrets.TMATE_AUTHORIZED_KEYS_URL }}
     steps:
       - run: |
-          echo "hi there" > /tmp/test
           export new_tag="from-env"
+          echo "$new_tag" > /tmp/test
       - name: create release
         if: ${{ success() }}
         id: create_release
@@ -36,7 +36,7 @@ jobs:
           release_name: ${{ github.ref }}
           draft: false
           prerelease: true
-          tag_name: ${{ env.new_tag }}
+          tag_name: ${{ env.new_tag }}1
       - name: upload release asset
         if: ${{ success() }}
         id: upload-release-asset 
