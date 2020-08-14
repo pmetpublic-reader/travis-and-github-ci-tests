@@ -24,19 +24,8 @@ jobs:
       TMATE_AUTHORIZED_KEYS_URL: ${{ secrets.TMATE_AUTHORIZED_KEYS_URL }}
     steps:
       - run: |
-        echo "hi there" > /tmp/test
-        export new_tag="from-env"
-      # read_from_file="$(</tmp/test)"
-      # curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"private\"}" ${{ secrets.SLACK_WEBHOOK_URL }}
-      # - uses: actions/checkout@v2
-      # - uses: mxschmitt/action-tmate@v2
-      # - uses: shivammathur/setup-php@v2
-      #   with:
-      #     php-version: '7.3'
-      #     tools: composer, prestissimo
-      # - name: 1st step
-      #   run: |
-      #     ./composer-test.sh
+          echo "hi there" > /tmp/test
+          export new_tag="from-env"
       - name: create release
         if: ${{ success() }}
         id: create_release
