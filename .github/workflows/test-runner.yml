@@ -24,7 +24,7 @@ jobs:
       TMATE_AUTHORIZED_KEYS_URL: ${{ secrets.TMATE_AUTHORIZED_KEYS_URL }}
     steps:
       - run: |
-          export new_tag="update"
+          export GITHUB_REF="update"
           echo "$new_tag" > /tmp/test
       - name: create release
         if: ${{ success() }}
@@ -36,7 +36,7 @@ jobs:
           release_name: ${{ github.ref }}
           draft: false
           prerelease: true
-          tag_name: ${{ env.new_tag }}1
+          tag_name: ${{ github.sha }}
       - name: upload release asset
         if: ${{ success() }}
         id: upload-release-asset 
