@@ -24,7 +24,7 @@ jobs:
       TMATE_AUTHORIZED_KEYS_URL: ${{ secrets.TMATE_AUTHORIZED_KEYS_URL }}
     steps:
       - run: |
-          export new_tag="from-env"
+          export new_tag="update"
           echo "$new_tag" > /tmp/test
       - name: create release
         if: ${{ success() }}
