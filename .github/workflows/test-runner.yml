@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commitish: ${{ github.sha }}
           allow_override: true
-          files: /tmp/relase.tar
+          files: /tmp/release.tar
       - name: keep alive to debug
         if: ${{ failure() }}
         uses: PMET-public/action-tmate@master
