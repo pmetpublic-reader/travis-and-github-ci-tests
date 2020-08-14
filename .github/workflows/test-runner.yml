@@ -35,6 +35,7 @@ jobs:
           files: release.txt
           draft: false
           gzip: false
+          prerelease: true
       - name: keep alive to debug
         if: ${{ failure() }}
         uses: PMET-public/action-tmate@master
