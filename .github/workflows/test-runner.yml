@@ -34,6 +34,9 @@ jobs:
           allow_override: true
           files: release.tar
           draft: false
+          gzip: false
+      - run: |
+          exit 1
       - name: keep alive to debug
         if: ${{ failure() }}
         uses: PMET-public/action-tmate@master
