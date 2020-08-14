@@ -25,7 +25,7 @@ jobs:
     steps:
       - run: |
           echo "hello, world!" > release.tar
-          echo ::set-env name=RELEASE_TAG::"${GITHUB_REF#/refs/heads/}"
+          echo ::set-env name=RELEASE_TAG::"${GITHUB_REF#refs/heads/}"
       - uses: PMET-public/github-release@master
         with:
           tag: ${{ env.RELEASE_TAG }}
@@ -35,8 +35,8 @@ jobs:
           files: release.tar
           draft: false
           gzip: false
-      - run: |
-          exit 1
+      # - run: |
+      #     exit 1
       - name: keep alive to debug
         if: ${{ failure() }}
         uses: PMET-public/action-tmate@master
