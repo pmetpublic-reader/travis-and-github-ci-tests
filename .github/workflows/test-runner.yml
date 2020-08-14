@@ -37,30 +37,30 @@ jobs:
       # - name: 1st step
       #   run: |
       #     ./composer-test.sh
-    - name: create release
-      if: ${{ success() }}
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        release_name: ${{ github.ref }}
-        draft: false
-        prerelease: true
-        tag_name: ${{ env.new_tag }}
-    - name: upload release asset
-      if: ${{ success() }}
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`.
-        # See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: /tmp/test
-        asset_name: test
-        asset_content_type: text/plain
-    - name: keep alive to debug
-      if: ${{ failure() }}
-      uses: PMET-public/action-tmate@master
+      - name: create release
+        if: ${{ success() }}
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_name: ${{ github.ref }}
+          draft: false
+          prerelease: true
+          tag_name: ${{ env.new_tag }}
+      - name: upload release asset
+        if: ${{ success() }}
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`.
+          # See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /tmp/test
+          asset_name: test
+          asset_content_type: text/plain
+      - name: keep alive to debug
+        if: ${{ failure() }}
+        uses: PMET-public/action-tmate@master
