@@ -30,7 +30,6 @@ jobs:
         with:
           tag: ${{ env.RELEASE_TAG }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          commitish: ${{ github.sha }}
           allow_override: true
           files: release.txt
           draft: false
