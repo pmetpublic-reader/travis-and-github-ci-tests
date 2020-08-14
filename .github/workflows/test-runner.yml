@@ -24,7 +24,7 @@ jobs:
       TMATE_AUTHORIZED_KEYS_URL: ${{ secrets.TMATE_AUTHORIZED_KEYS_URL }}
     steps:
       - run: |
-          echo "hello, world!" > /tmp/release.tar
+          echo "hello, world!" > release.tar
           echo ::set-env name=RELEASE_TAG::"${GITHUB_REF#/refs/head/}"
       - uses: PMET-public/github-release@master
         with:
@@ -32,7 +32,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commitish: ${{ github.sha }}
           allow_override: true
-          files: /tmp/release.tar
+          files: release.tar
       - name: keep alive to debug
         if: ${{ failure() }}
         uses: PMET-public/action-tmate@master
