@@ -33,6 +33,7 @@ jobs:
           commitish: ${{ github.sha }}
           allow_override: true
           files: release.tar
+          draft: false
       - name: keep alive to debug
         if: ${{ failure() }}
         uses: PMET-public/action-tmate@master
