@@ -23,18 +23,20 @@ jobs:
       SLACK_WEBHOOK_URL_FOR_TMATE_FROM_GITHUB_WORKFLOW: ${{ secrets.SLACK_WEBHOOK_URL_FOR_TMATE_FROM_GITHUB_WORKFLOW }}
       TMATE_AUTHORIZED_KEYS_URL: ${{ secrets.TMATE_AUTHORIZED_KEYS_URL }}
     steps:
+      # be sure to create release.tar in default path
       - run: |
-          echo "$GITHUB_SHA" > release.txt
           echo ::set-env name=RELEASE_TAG::"${GITHUB_REF#refs/heads/}"
       - uses: PMET-public/github-release@master
         with:
           tag: ${{ env.RELEASE_TAG }}
           token: ${{ secrets.GITHUB_TOKEN }}
           allow_override: true
-          files: release.txt
+          files: release.tar
           draft: false
           gzip: false
           prerelease: true
+      - run: |
+            exit 1
       - name: keep alive to debug
         if: ${{ failure() }}
         uses: PMET-public/action-tmate@master
