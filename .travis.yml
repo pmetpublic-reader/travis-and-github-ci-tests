@@ -5,16 +5,18 @@ git:
 services:
   - docker
 os:
-  # - linux
-  - osx
+  - linux
 dist: bionic
+arch: arm64
 env:
   matrix:
     - debug=true
     # - debug=""
-# install:
-#   - brew install tmate
-#   - tmate
-#   - sleep 1h
-# script:
-#   - for i in {1..60..5}; do echo $i && sleep 9m; done
+install:
+  - cid=$(docker create tmate/tmate)
+  - sudo docker cp $cid:/build/tmate /usr/local/bin/tmate
+script:
+  - tmate -S /tmp/tmate.sock new-session -d
+  - tmate -S /tmp/tmate.sock wait tmate-ready
+  - tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
+  - sleep 300
