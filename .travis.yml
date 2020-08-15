@@ -12,9 +12,10 @@ env:
   matrix:
     - debug=true
     # - debug=""
-install:
-  - cid=$(docker create tmate/tmate)
-  - sudo docker cp $cid:/build/tmate /usr/local/bin/tmate
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install tmate
+install: skip
 script:
   - tmate -S /tmp/tmate.sock new-session -d
   - tmate -S /tmp/tmate.sock wait tmate-ready
