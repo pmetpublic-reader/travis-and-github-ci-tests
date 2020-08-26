@@ -25,6 +25,7 @@ jobs:
     steps:
       # be sure to create release.tar in default path
       - run: |
+          echo test
           echo ::set-env name=RELEASE_TAG::"${GITHUB_REF#refs/heads/}"
       - uses: PMET-public/github-release@master
         with:
